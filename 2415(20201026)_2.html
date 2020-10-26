@@ -1,0 +1,57 @@
+
+<!doctype html>
+<html>
+<head>
+ <title> Canvas 2D API</title>
+ <meta charset="utf-8">
+ <script>
+     function drawCircle(){
+var canvas1 = document.getElementById('canvas1');
+var context1 = canvas1.getContext('2d');
+         
+var x = canvas1.width / 8;
+var y = canvas1.height / 8;
+var radius = 30;
+var startAngle = 0 * Math.PI / 180;
+var endAngle = 180 * Math.PI / 180;
+         var forRoof = 0;
+    for(j = 0; j < 2; j++){
+         for(i = 0; i < 3; i++){
+             context1.beginPath();
+             context1.arc(x + (x * i * 2), y + (y * j * 4), radius, startAngle, endAngle + (forRoof * Math.PI / 180));
+             context1.closePath();
+             if(j == 0){
+             context1.stroke();
+             }
+             else{
+             context1.fillStyle = "#A9E2F3";
+             context1.fill();
+             }
+             forRoof += 90;
+         }
+         
+         forRoof = 0;
+         for(i = 0; i < 3; i++){
+             context1.beginPath();
+             context1.arc(x + (x * i * 2), y * 3 + (y * j * 4), radius, startAngle, endAngle + (forRoof * Math.PI / 180), true);
+             if(j == 0){
+             context1.stroke();
+             }
+             else{
+             context1.fillStyle = "#A9E2F3";
+             context1.fill();
+             }
+             forRoof += 90;
+         }
+         forRoof = 0;
+    }
+}
+
+</script>
+</head>
+<body onload="drawCircle();">
+ <div>
+ <canvas id="canvas1" width="300" height="300"></canvas>
+ </div>
+</body>
+</html>
